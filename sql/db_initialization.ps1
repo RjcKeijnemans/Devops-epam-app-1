@@ -17,24 +17,13 @@ startip=0.0.0.0
 endip=0.0.0.0
 
 # Create a resource group
-az group create \
-    --name $resourceGroupName \
-    --location $location
+az group create --name $resourceGroupName --location $location
 
 # Create a logical server in the resource group
-az postgres server create \
-    --name $servername \
-    --resource-group $resourceGroupName \
-    --location $location  \
-    --admin-user $adminlogin \
-    --admin-password $password \
+az postgres server create --name $servername --resource-group $resourceGroupName --location $location --admin-user $adminlogin --admin-password $password 
 
 # Configure a firewall rule for the server
-az sql server firewall-rule create \
-    --resource-group $resourceGroupName \
-    --server $servername \
-    --start-ip-address $startip \
-    --end-ip-address $endip
+az sql server firewall-rule create --resource-group $resourceGroupName --server $servername --start-ip-address $startip --end-ip-address $endip
 
 # Create database and user credentials
 psql -h $DBURL -U $adminlogin@$servername --file='db.sql' postgres
