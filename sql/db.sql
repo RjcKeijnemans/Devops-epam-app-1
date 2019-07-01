@@ -1,11 +1,10 @@
 DROP DATABASE IF EXISTS api_db;
 DROP ROLE IF EXISTS api_db_user;
 CREATE ROLE api_db_user WITH PASSWORD 'api_db_password' LOGIN;
-CREATE DATABASE api_db;
-ALTER DATABASE api_db OWNER to api_db_user;
+CREATE DATABASE api_db OWNER = api_db_user;
 GRANT ALL PRIVILEGES ON DATABASE api_db to api_db_user;
 ---
-\connect api_db api_db_user
+\connect api_db_user@api_db
 ---
 CREATE SCHEMA api AUTHORIZATION api_db_user;
 
