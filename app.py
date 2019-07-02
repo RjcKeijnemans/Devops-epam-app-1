@@ -61,14 +61,14 @@ def add_api_data(values1, values2, values3):
     insert = ApiData(uuid1=values1, uuid2=values2, uuid3=values3)
     db_session.add(insert)
     db_session.commit()
-    return 'Succesfully created a new id and inserted the values into the database table'
+    return 'Succesfully created a new id and inserted the values into the database table!'
 
 @app.route("/delete_api_data/<id1>")
 def delete_api_data(id1):
     insert = ApiData(id=id1)
     db_session.delete(insert)
     db_session.commit()
-    return 'Succesfully deleted the id from the database table'
+    return 'Succesfully deleted the id from the database table!'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
