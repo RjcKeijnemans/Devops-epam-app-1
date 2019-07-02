@@ -60,7 +60,7 @@ def get_api_data():
 def post_api_data(uuid):
     input_data = request.get_json()
     print (input_data)
-    return jsonify(input_data)
+    return uuid
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
