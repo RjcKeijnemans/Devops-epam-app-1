@@ -57,13 +57,13 @@ def get_api_data():
     return resp
 
 
-def post_api_data(id):
+def post_api_data() -> ApiData:
     entry = db_session.query(ApiData).get(id)
     return entry
 
 @app.route("/query_api_data", methods=['GET'])
 def query_api_data():
-    resp = jsonify(json_list=[i.serialize for i in post_api_data()])
+    resp = jsonify(json_list=[i.serialize for i in post_api_data().all()])
     return resp   
 
 if __name__ == '__main__':
