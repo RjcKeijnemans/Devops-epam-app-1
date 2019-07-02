@@ -41,13 +41,13 @@ class ApiData(Base):
 
 
 def get_db_api_data() -> ApiData:
-    api_data = db_session.query(ApiData)
+    api_data = db_session.query(ApiData).get(id)
     return api_data
 
 
 @app.route("/", methods=["GET"])
 def app_index():
-    return "Available methods: get_api_data, post_api_data"
+    return "Available methods: get_api_data"
 
 
 @app.route("/get_api_data", methods=["GET"])
@@ -55,16 +55,6 @@ def get_api_data():
     resp = jsonify(json_list=[i.serialize for i in get_db_api_data().all()])
     resp.status_code = 200
     return resp
-
-
-def post_api_data() -> ApiData:
-    entry = db_session.query(ApiData).get(id)
-    return entry
-
-@app.route("/query_api_data", methods=['GET'])
-def query_api_data():
-    resp = jsonify(json_list=[i.serialize for i in post_api_data().all()])
-    return resp   
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
