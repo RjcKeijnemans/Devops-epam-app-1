@@ -1,7 +1,7 @@
 az account set --subscription 94fbadf8-645b-426b-8455-4de8b5a74bb5
 
 # Set resourcegroup and location
-resourceGroupName=Flask-resourcegroup-$(random)
+resourceGroupName=Flask-resourcegroup
 location=westeurope
 
 # Set an admin login and password for your database
@@ -29,4 +29,4 @@ az postgres server firewall-rule create --resource-group $resourceGroupName --se
 PGPASSWORD=$password psql -h $DBURL -U $adminlogin@$servername --file='db.sql' postgres
 
 # Connect to new database with user credentials and insert inital values
-PGPASSWORD='Interforaewg098!' psql -h $DBURL -U 'api_db_user' -d 'api_db' --file='db1.sql'
+PGPASSWORD='Interforaewg098!' psql -h $DBURL -U 'api_db_user'@$servername -d 'api_db' --file='db1.sql'
