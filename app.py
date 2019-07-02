@@ -8,11 +8,12 @@ from sqlalchemy import Column, Integer, String
 user = 'api_db_user'
 pwd = 'Interforaewg098!'
 db = 'api_db'
+subname = 'server-10002' 
 sub = 'server-10002.postgres.database.azure.com'
 
 app = Flask(__name__)
 
-engine = create_engine("postgresql+psycopg2://{0}:{1}@{2}/{3}?sslmode=require".format(user, pwd, sub, db), echo = True)
+engine = create_engine("postgresql+psycopg2://{0}@{1}:{2}@{3}/{4}?sslmode=require".format(user, subname, pwd, sub, db), echo = True)
 
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
