@@ -47,7 +47,7 @@ def get_db_api_data() -> ApiData:
 
 @app.route("/", methods=["GET"])
 def app_index():
-    return "Available method: get_api_data"
+    return "Available methods: get_api_data, post_api_data"
 
 
 @app.route("/get_api_data", methods=["GET"])
@@ -55,6 +55,12 @@ def get_api_data():
     resp = jsonify(json_list=[i.serialize for i in get_db_api_data().all()])
     resp.status_code = 200
     return resp
+
+
+@app.route('/post_api_data', methods = ['POST'])
+def post_api_data():
+    user_input = input("Enter 3 values in the following format: (int1, int2, int3)")
+    return user_input
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
