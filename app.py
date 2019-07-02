@@ -62,5 +62,10 @@ def post_api_data(uuid):
     print (input_data)
     return uuid
 
+
+@app.route('/query', methods = ['GET'])
+def get_all_users():
+    return ApiData.query.all()
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
