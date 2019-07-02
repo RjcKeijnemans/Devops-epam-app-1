@@ -47,7 +47,7 @@ def get_db_api_data() -> ApiData:
 
 @app.route("/", methods=["GET"])
 def app_index():
-    return "Available methods are: get_api_data,  add_api_data/'v1,v2,v3',  delete_api_data/'id'"
+    return "Available methods are: get_api_data,  insert_api_data/(v1,v2,v3),  delete_api_data/(id)"
 
 
 @app.route("/get_api_data", methods=["GET"])
@@ -56,8 +56,8 @@ def get_api_data():
     resp.status_code = 300
     return resp
 
-@app.route("/add_api_data/<values1>,<values2>,<values3>")
-def add_api_data(values1, values2, values3):
+@app.route("/insert_api_data/<values1>,<values2>,<values3>")
+def insert_api_data(values1, values2, values3):
     insert = ApiData(uuid1=values1, uuid2=values2, uuid3=values3)
     db_session.add(insert)
     db_session.commit()
@@ -67,7 +67,7 @@ def add_api_data(values1, values2, values3):
 def delete_api_data(val):
     ApiData.query.filter_by(id=val).delete()
     db_session.commit()
-    return 'Succesfully deleted the id from the database table!'
+    return 'Succesfully deleted the row by id from the database table!'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
