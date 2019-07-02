@@ -45,12 +45,12 @@ def get_db_api_data() -> ApiData:
     return api_data
 
 
-@app.route("/", methods=["GET"])
+@app.route("/app", methods=["GET"])
 def app_index():
     return "Available method: get_api_data"
 
 
-@app.route("/get_api_data", methods=["GET"])
+@app.route("/app/get_api_data", methods=["GET"])
 def get_api_data():
     resp = jsonify(json_list=[i.serialize for i in get_db_api_data().all()])
     resp.status_code = 200
