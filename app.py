@@ -56,9 +56,9 @@ def get_api_data():
     resp.status_code = 200
     return resp
 
-@app.route('/query_api_data/<value>', methods = ['GET'])
+@app.route('/query_api_data/<value>')
 def query_api_data(value):
-    result = ApiData.query.filter_by(id=value).first_or_404()
+    result = ApiData.query.filter_by(id=value).first()
     return result
 
 if __name__ == '__main__':
