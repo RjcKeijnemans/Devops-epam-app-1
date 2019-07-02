@@ -56,9 +56,9 @@ def get_api_data():
     resp.status_code = 200
     return resp
 
-@app.route("/post_api_data/<value1, value2, value3>", Methods=["POST"])
-def post_api_data(value1, value2, value3):
-    values = ApiData(value1, value2, value3)
+@app.route("/post_api_data/<uuid1, uuid2, uuid3>")
+def post_api_data(uuid1, uuid2, uuid3):
+    values = ApiData(uuid1, uuid2, uuid3)
     db_session.add(values)
     db_session.commit()
     return 'Inserted values into database'
