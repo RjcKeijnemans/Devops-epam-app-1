@@ -56,7 +56,7 @@ def get_api_data():
     resp.status_code = 200
     return resp
 
-@app.route("/post_api_data/<id>", method =['POST'])
+@app.route("/post_api_data/<id>")
 def post_api_data(id):
     entry = db.session.query(ApiData).get(id)
     form = request.form
