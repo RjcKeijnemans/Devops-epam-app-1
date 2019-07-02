@@ -9,11 +9,10 @@ user = 'api_db_user'
 pwd = 'Interforaewg098!'
 db = 'api_db'
 sub = 'server-10002.postgres.database.azure.com'
-port = '5432'
 
 app = Flask(__name__)
 
-engine = create_engine("postgres://{0}:{1}@{2}:{3}/{4}".format(user, pwd, sub, port, db), echo = True)
+engine = create_engine("postgresql+psycopg2:://{0}:{1}@{2}/{3}?sslmode=require".format(user, pwd, sub, db), echo = True)
 
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
