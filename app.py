@@ -56,10 +56,10 @@ def get_api_data():
     resp.status_code = 200
     return resp
 
-@app.route('/post_api_data', methods = ['POST'])
-def post_api_data():
+@app.route('/post_api_data/<uuid>', methods = ['POST'])
+def post_api_data(uuid):
     input_data = request.get_json()
-    input_data.status_code = 200
+    print (input_data)
     return jsonify(input_data)
 
 if __name__ == '__main__':
