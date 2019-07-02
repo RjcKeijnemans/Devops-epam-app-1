@@ -58,13 +58,8 @@ def get_api_data():
 
 @app.route("/post_api_data/<id>")
 def post_api_data(id):
-    entry = db.session.query(ApiData).get(id)
-    form = request.form
-    entry.uuid1 = form['uuid1']
-    entry.uuid2 = form['uuid2']
-    entry.uuid3 = form['uuid3']
-    db.session.commit()
-    return 'Succes'
+    entry = db_session.query(ApiData).get(id)
+    return entry
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
