@@ -56,10 +56,15 @@ def get_api_data():
     resp.status_code = 200
     return resp
 
-@app.route("/post_api_data/<id>", method =['GET'])
+@app.route("/post_api_data/<id>", method =['POST'])
 def post_api_data(id):
     entry = db.session.query(ApiData).get(id)
-    return entry
+    form = request.form
+    entry.uuid1 = form['uuid1']
+    entry.uuid2 = form['uuid2']
+    entry.uuid3 = form['uuid3']
+    db.session.commit()
+    return 'Succes'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
