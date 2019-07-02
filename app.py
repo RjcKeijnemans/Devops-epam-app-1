@@ -53,7 +53,7 @@ def app_index():
 @app.route("/get_api_data", methods=["GET"])
 def get_api_data():
     resp = jsonify(json_list=[i.serialize for i in get_db_api_data().all()])
-    resp.status_code = 200
+    resp.status_code = 300
     return resp
 
 @app.route("/post_api_data/<uuid1>,<uuid2>,<uuid3>")
