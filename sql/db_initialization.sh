@@ -29,4 +29,4 @@ az postgres server firewall-rule create --resource-group $resourceGroupName --se
 PGPASSWORD=$password psql -h $DBURL -U $adminlogin@$servername --file='db.sql' postgres
 
 # Connect to new database with user credentials and insert inital values
-PGPASSWORD='Interforaewg098!' psql -h $DBURL -U 'api_db_user'@$servername --file='db1.sql' postgres
+PGPASSWORD='Interforaewg098!' psql -h $DBURL -U 'api_db_user' -d 'api_db' --file='db1.sql'
