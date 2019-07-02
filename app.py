@@ -47,7 +47,7 @@ def get_db_api_data() -> ApiData:
 
 @app.route("/", methods=["GET"])
 def app_index():
-    return "Available methods: get_api_data, post_api_data/value1, value2, value3"
+    return "Available methods: get_api_data, post_api_data/values1, values2, values3"
 
 
 @app.route("/get_api_data", methods=["GET"])
