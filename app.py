@@ -63,9 +63,10 @@ def add_api_data(values1, values2, values3):
     db_session.commit()
     return 'Succesfully created a new id and inserted the values into the database table!'
 
-@app.route("/delete_api_data/<id1>")
-def delete_api_data(id1):
-    ApiData.query.filter_by(id==id1).delete()
+@app.route("/delete_api_data/<val>")
+def delete_api_data(val):
+    data = ApiData.query.filter_by(id=val).one()
+    db_session.delete(data)
     db_session.commit()
     return 'Succesfully deleted the id from the database table!'
 
