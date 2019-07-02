@@ -47,7 +47,7 @@ def get_db_api_data() -> ApiData:
 
 @app.route("/", methods=["GET"])
 def app_index():
-    return "Available methods: get_api_data, post_api_data"
+    return "Available methods: get_api_data, query_api_data"
 
 
 @app.route("/get_api_data", methods=["GET"])
@@ -56,9 +56,9 @@ def get_api_data():
     resp.status_code = 200
     return resp
 
-@app.route('/query_api_data/<id>', methods = ['GET'])
-def post_api_data(value):
-    result = ApiData.query.filter_by(id=value).first()
+@app.route('/query_api_data/<value>', methods = ['GET'])
+def query_api_data(value):
+    result = ApiData.query.filter_by(id=value).first_or_404()
     return result
 
 if __name__ == '__main__':
