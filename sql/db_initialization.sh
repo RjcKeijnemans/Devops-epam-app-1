@@ -2,7 +2,7 @@ az account set --subscription 94fbadf8-645b-426b-8455-4de8b5a74bb5
 
 # Set resourcegroup and location
 resourceGroupName=Flask-resourcegroup-
-location=westeurope
+location=centralus
 
 # Set an admin login and password for your database
 adminlogin=SqlAdmin
@@ -20,7 +20,7 @@ endip=0.0.0.0
 az group create --name $resourceGroupName --location $location
 
 # Create an app service plan in the resource group
-az group deployment create --resource-group $resourceGroupName --template-uri https://github.com/Xangliev/Devops-epam-app/blob/master/service_plan.json
+az group deployment create --resource-group $resourceGroupName --template-uri https://raw.githubusercontent.com/Xangliev/Devops-epam-app/master/service_plan.json
 
 # Create a logical server in the resource group
 az postgres server create --name $servername --resource-group $resourceGroupName --location $location --admin-user $adminlogin --admin-password $password --sku-name B_Gen5_1
