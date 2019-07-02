@@ -1,5 +1,5 @@
 POSTGRES_USER=api_db_user
-POSTGRES_PASSWORD=api_db_password
+POSTGRES_PASSWORD=Interforaewg098!
 POSTGRES_DB=api_db
+SUBDOMAIN_SERVER=server-10002.postgres.database.azure.com
 DB_PORT=5432
-DB_HOST=localhost

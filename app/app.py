@@ -8,12 +8,12 @@ from sqlalchemy import Column, Integer, String
 user = os.environ['POSTGRES_USER']
 pwd = os.environ['POSTGRES_PASSWORD']
 db = os.environ['POSTGRES_DB']
-host = os.environ['DB_HOST']
+sub = os.environ['SUBDOMAIN_SERVER']
 port = os.environ['DB_PORT']
 
 app = Flask(__name__)
 
-engine = create_engine("postgres://{0}:{1}@{2}:{3}/{4}".format(user, pwd, host, port, db))
+engine = create_engine("postgres://{0}:{1}@{2}:{3}/{4}".format(user, pwd, sub, port, db))
 
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
