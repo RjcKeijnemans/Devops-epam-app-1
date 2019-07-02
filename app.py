@@ -65,7 +65,7 @@ def add_api_data(values1, values2, values3):
 
 @app.route("/delete_api_data/<val>")
 def delete_api_data(val):
-    db_session.query.filter_by(ApiData.id==val).delete()
+    ApiData.query.filter_by(id=1).delete()
     db_session.commit()
     return 'Succesfully deleted the id from the database table!'
 
