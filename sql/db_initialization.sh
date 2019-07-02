@@ -20,7 +20,7 @@ endip=0.0.0.0
 az group create --name $resourceGroupName --location $location
 
 # Create an app service plan in the resource group
-az group deployment create --resource-group $resourceGroupName --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/monitor-autoscale-webappserviceplan-simplemetricbased/azuredeploy.json
+az group deployment create --resource-group $resourceGroupName --template-uri https://github.com/Xangliev/Devops-epam-app/blob/master/service_plan.json
 
 # Create a logical server in the resource group
 az postgres server create --name $servername --resource-group $resourceGroupName --location $location --admin-user $adminlogin --admin-password $password --sku-name B_Gen5_1
