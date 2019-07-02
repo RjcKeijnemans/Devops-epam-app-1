@@ -47,7 +47,7 @@ def get_db_api_data() -> ApiData:
 
 @app.route("/", methods=["GET"])
 def app_index():
-    return "Available methods: get_api_data, post_api_data/values1, values2, values3"
+    return "Available methods: get_api_data, add_api_data/values1, values2, values3"
 
 
 @app.route("/get_api_data", methods=["GET"])
@@ -56,8 +56,8 @@ def get_api_data():
     resp.status_code = 300
     return resp
 
-@app.route("/post_api_data/<values1>,<values2>,<values3>")
-def post_api_data(values1, values2, values3):
+@app.route("/add_api_data/<values1>,<values2>,<values3>")
+def add_api_data(values1, values2, values3):
     insert = ApiData(uuid1=values1, uuid2=values2, uuid3=values3)
     db_session.add(insert)
     db_session.commit()
