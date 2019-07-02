@@ -47,7 +47,7 @@ def get_db_api_data() -> ApiData:
 
 @app.route("/", methods=["GET"])
 def app_index():
-    return "Available methods: get_api_data, post_api_data"
+    return "Available methods: get_api_data, post_api_data/<value1>, <value2>, <value3>"
 
 
 @app.route("/get_api_data", methods=["GET"])
@@ -61,7 +61,7 @@ def post_api_data(values1, values2, values3):
     insert = ApiData(uuid1=values1, uuid2=values2, uuid3=values3)
     db_session.add(insert)
     db_session.commit()
-    return 'Inserted values into database'
+    return 'Succesfully created a new id and inserted the values into the ApiData-table'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
