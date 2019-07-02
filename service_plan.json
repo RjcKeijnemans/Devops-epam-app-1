@@ -43,7 +43,7 @@
       },
       "defaultCapacity": {
         "type": "Int",
-        "defaultValue": 5,
+        "defaultValue": 2,
         "metadata": {
           "description": "The default capacity.  Autoscale engine will preventively set the instance count to be this value if it can not find any metric data."
         }
