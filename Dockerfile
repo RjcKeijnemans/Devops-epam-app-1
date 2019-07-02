@@ -6,7 +6,5 @@ WORKDIR /
 
 RUN pip install -r ./requirements.txt --no-cache-dir
 
-RUN env.sh
-
 ENV FLASK_APP=app.py
 CMD flask db upgrade && flask run -h 0.0.0.0 -p 5000

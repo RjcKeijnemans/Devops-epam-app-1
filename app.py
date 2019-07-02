@@ -5,15 +5,15 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy import Column, Integer, String
 
-user = os.environ['POSTGRES_USER']
-pwd = os.environ['POSTGRES_PASSWORD']
-db = os.environ['POSTGRES_DB']
-sub = os.environ['SUBDOMAIN_SERVER']
-port = os.environ['DB_PORT']
+user = 'api_db_user'
+pwd = 'Interforaewg098!'
+db = 'api_db'
+sub = 'server-10002.postgres.database.azure.com'
+port = '5432'
 
 app = Flask(__name__)
 
-engine = create_engine("postgres://{0}:{1}@{2}:{3}/{4}".format(user, pwd, sub, port, db))
+engine = create_engine("postgres://{0}:{1}@{2}:{3}/{4}".format(user, pwd, sub, port, db), echo = True)
 
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
@@ -45,12 +45,12 @@ def get_db_api_data() -> ApiData:
     return api_data
 
 
-@app.route("/app/", methods=["GET"])
+@app.route("/", methods=["GET"])
 def app_index():
     return "Available method: get_api_data"
 
 
-@app.route("/app/get_api_data", methods=["GET"])
+@app.route("/get_api_data", methods=["GET"])
 def get_api_data():
     resp = jsonify(json_list=[i.serialize for i in get_db_api_data().all()])
     resp.status_code = 200
