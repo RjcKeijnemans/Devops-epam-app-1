@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -56,11 +56,11 @@ def get_api_data():
     resp.status_code = 200
     return resp
 
-
 @app.route('/post_api_data', methods = ['POST'])
 def post_api_data():
-    user_input = input("Enter 3 values in the following format: (int1, int2, int3)")
-    return user_input
+    input_data = request.get_json()
+    input_data.status_code = 200
+    return jsonify(input_data)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
