@@ -29,7 +29,7 @@
       },
       "minimumCapacity": {
         "type": "Int",
-        "defaultValue": 2,
+        "defaultValue": 1,
         "metadata": {
           "description": "The minimum capacity.  Autoscale engine will ensure the instance count is at least this value."
         }
@@ -43,7 +43,7 @@
       },
       "defaultCapacity": {
         "type": "Int",
-        "defaultValue": 2,
+        "defaultValue": 1,
         "metadata": {
           "description": "The default capacity.  Autoscale engine will preventively set the instance count to be this value if it can not find any metric data."
         }
