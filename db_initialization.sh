@@ -1,6 +1,6 @@
 # Set subscription
-subscriptionId=94fbadf8-645b-426b-8455-4de8b5a74bb5
-az account set --subscription $subscriptionId
+# subscriptionId="your subscription ID"
+# az account set --subscription $subscriptionId
 
 # Set resourcegroup and location
 resourceGroupName=Flask-resourcegroup-epam-name$RANDOM
