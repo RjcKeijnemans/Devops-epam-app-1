@@ -1,10 +1,15 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.7
+# Use an official Python runtime as a parent image
+FROM python:3.7-stretch
 
-COPY requirements.txt /
+# Copy the current directory contents into the container at /app
+COPY . /
 
-WORKDIR /
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-RUN pip install -r ./requirements.txt --no-cache-dir
+RUN pip install --upgrade werkzeug==0.14.1
 
-ENV FLASK_APP=app.py
-CMD flask db upgrade && flask run -h 0.0.0.0 -p 5000
+EXPOSE 5000
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
