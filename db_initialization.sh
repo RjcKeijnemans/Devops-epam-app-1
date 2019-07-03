@@ -43,6 +43,5 @@ PGPASSWORD='Interforaewg098!' psql -h $DBURL -U 'api_db_user'@$servername -d 'ap
 az webapp up -n $webappname -g $resourceGroupName -l $location --plan $planName
 # Enable Load Balancing
 az appservice plan update --number-of-workers 2 --resource-group $resourceGroupName --name $planName
-
 # Enable CD from Repository
-# az webapp deployment source config --repo-url $repoUrl --resource-group $resourceGroupName --name $webappname
+az webapp deployment source config --repo-url $repoUrl --resource-group $resourceGroupName --name $webappname
