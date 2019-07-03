@@ -11,17 +11,17 @@
       },
       "sku": {
         "type": "string",
-        "defaultValue": "Standard",
+        "defaultValue": "Premium",
         "allowedValues": [
           "Standard",
           "Premium"
         ],
         "metadata": {
           "description": "The pricing tier for the App Service plan."
-        }
+        }  
       },
       "svcPlanSize": {
-        "defaultValue": "S1",
+        "defaultValue": "P1v2",
         "type": "string",
         "metadata": {
           "description": "The instance size of the app."
@@ -98,10 +98,10 @@
     "resources": [
       {
         "type": "Microsoft.Web/serverfarms",
-        "apiVersion": "2015-08-01",
+        "apiVersion": "2016-09-01",
         "name": "[parameters('svcPlanName')]",
-        "kind": "linux",
         "location": "[resourceGroup().location]",
+        "kind": "linux",
         "sku": {
           "name": "[parameters('svcPlanSize')]",
           "tier": "[parameters('sku')]",
