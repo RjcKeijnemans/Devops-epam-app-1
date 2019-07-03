@@ -2,7 +2,7 @@
 az account set --subscription 94fbadf8-645b-426b-8455-4de8b5a74bb5
 
 # Set resourcegroup and location
-resourceGroupName=Flask-resourcegroup-epam-$RANDOM
+resourceGroupName=Flask-resourcegroup-epam-name$RANDOM
 location=centralus
 
 # Set an admin login and password for your database
@@ -19,10 +19,10 @@ endip=0.0.0.0
 
 # )Optional) Set name of App Service Plan and Web App
 planName=SampleAppServicePlan
-webappname=Flask-EPAM-Test-App-$RANDOM
+webappname=Flask-EPAM-Test-App$RANDOM
 
 # (Optional) Set Repository URL
-repoUrl= https://github.com/Xangliev/Devops-epam-app.git
+repoUrl=https://github.com/Xangliev/Devops-epam-app.git
 
 # Create a resource group
 az group create --name $resourceGroupName --location $location
