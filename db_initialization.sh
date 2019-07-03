@@ -3,7 +3,7 @@ az account set --subscription 94fbadf8-645b-426b-8455-4de8b5a74bb5
 
 # Set resourcegroup and location
 resourceGroupName=Flask-resourcegroup-epam-$RANDOM
-location=westeurope
+location=centralus
 
 # Set an admin login and password for your database
 adminlogin=SqlAdmin
