@@ -30,10 +30,10 @@ az group create --name $resourceGroupName --location $location
 az appservice plan create -n $planName -g $resourceGroupName -l $location --is-linux --number-of-workers 2 --sku P1v2
 
 # Create initial web app
-az webapp create -n $webappname -g $resourceGroupName -p $planName -l $location
+az webapp create -n $webappname -g $resourceGroupName -p $planName
 
 # Create a container registry
-az acr create -n $registryName -g $resourceGroupName -l $location --sku Premium --admin-enabled true
+az acr create -n $registryName -g $resourceGroupName --sku Premium --admin-enabled true
 
 # Create a logical server in the resource group
 az postgres server create --name $servername --resource-group $resourceGroupName --location $location --admin-user $adminlogin --admin-password $password --sku-name B_Gen5_1
