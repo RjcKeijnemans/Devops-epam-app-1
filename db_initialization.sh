@@ -3,7 +3,7 @@
 # az account set --subscription $subscriptionId
 
 # Set resourcegroup and location
-resourceGroupName=Flask-resourcegroup-epam-name2
+resourceGroupName=Flask-resourcegroup-epam-name5
 location=centralus
 
 # Set an admin login and password for your database
@@ -11,17 +11,17 @@ adminlogin=SqlAdmin
 password="ChangeYourAdminPassword1"
 
 # The logical server name has to be unique in the system
-servername=server-20003
-DBURL="server-20003.postgres.database.azure.com"
+servername=server-20004
+DBURL="server-20004.postgres.database.azure.com"
 
 # The ip address range that you want to allow to access your DB
 startip=0.0.0.0
 endip=0.0.0.0
 
 # Set name of container registry, App Service Plan and Web App
-registryName=bctepamregistry1
-planName=SampleAppServicePlan
-webappname=Flask-EPAM-Test-App
+registryName=bctepamregistry2
+planName=SampleAppServicePlan2
+webappname=Flask-EPAM-Test-App6
 
 # Create a resource group
 az group create --name $resourceGroupName --location $location
@@ -30,7 +30,7 @@ az group create --name $resourceGroupName --location $location
 az appservice plan create -n $planName -g $resourceGroupName -l $location --is-linux --number-of-workers 2 --sku P1v2
 
 # Create initial web app
-az webapp create -n $webappname -g $resourceGroupName -p $planName
+az webapp create --name $webappname --resource-group $resourceGroupName --plan $planName --runtime "Python|3.7"
 
 # Create a container registry
 az acr create -n $registryName -g $resourceGroupName --sku Premium --admin-enabled true
