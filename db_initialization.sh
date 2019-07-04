@@ -3,7 +3,7 @@
 # az account set --subscription $subscriptionId
 
 # Set resourcegroup and location
-resourceGroupName=Flask-resourcegroup-epam-name$RANDOM
+resourceGroupName=Flask-resourcegroup-epam-name
 location=centralus
 
 # Set an admin login and password for your database
@@ -18,19 +18,19 @@ DBURL="server-10002.postgres.database.azure.com"
 startip=0.0.0.0
 endip=0.0.0.0
 
-# (Optional) Set name of container registry, App Service Plan and Web App
+# Set name of container registry, App Service Plan and Web App
 registryName=bctepamregistry
 planName=SampleAppServicePlan
-webappname=Flask-EPAM-Test-App$RANDOM
-
-# (Optional) Set Repository URL
-repoUrl=https://github.com/Xangliev/Devops-epam-app.git
+webappname=Flask-EPAM-Test-App
 
 # Create a resource group
 az group create --name $resourceGroupName --location $location
 
 # Create load balancing app service plan
 az appservice plan create -n $planName -g $resourceGroupName -l $location --is-linux --number-of-workers 2 --sku P1v2
+
+# Create initial web app
+az webapp create -n $webappname -g $resourceGroupName -p $planName 
 
 # Create a container registry
 az acr create -n $registryName -g $resourceGroupName -l $location --sku Premium --admin-enabled true
@@ -46,6 +46,9 @@ PGPASSWORD=$password psql -h $DBURL -U $adminlogin@$servername --file='db.sql' p
 
 # Connect to new database with user credentials and insert inital values
 PGPASSWORD='Interforaewg098!' psql -h $DBURL -U 'api_db_user'@$servername -d 'api_db' --file='db1.sql'
+
+# (Optional) Set Repository URL
+# repoUrl=https://github.com/Xangliev/Devops-epam-app.git
 
 # Steps for deploying web app, with load balancing and CD from Github Source enabled
 # Create webapp from local git
