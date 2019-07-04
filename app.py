@@ -73,7 +73,10 @@ def delete_api_data(val):
 @app.route('/insert_api_data_json', methods=["GET", "POST"])
 def add_message():
     insert = request.json
-    return insert['uuid2']
+    insert_uuid1 = insert['uuid1']
+    insert_uuid2 = insert['uuid2']
+    insert_uuid3 = insert['uuid3']
+    return '{} {} {}'.format(insert_uuid1, insert_uuid2, insert_uuid3)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
