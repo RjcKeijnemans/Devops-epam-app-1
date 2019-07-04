@@ -3,7 +3,7 @@
 # az account set --subscription $subscriptionId
 
 # Set resourcegroup and location
-resourceGroupName=Flask-resourcegroup-epam-name5
+resourceGroupName=Flask-resourcegroup-epam-name6
 location=centralus
 
 # Set an admin login and password for your database
@@ -11,17 +11,17 @@ adminlogin=SqlAdmin
 password="ChangeYourAdminPassword1"
 
 # The logical server name has to be unique in the system
-servername=server-20004
-DBURL="server-20004.postgres.database.azure.com"
+servername=server-20005
+DBURL="server-20005.postgres.database.azure.com"
 
 # The ip address range that you want to allow to access your DB
 startip=0.0.0.0
 endip=0.0.0.0
 
 # Set name of container registry, App Service Plan and Web App
-registryName=bctepamregistry2
-planName=SampleAppServicePlan2
-webappname=Flask-EPAM-Test-App6
+registryName=bctepamregistry3
+planName=SampleAppServicePlan3
+webappname=Flask-EPAM-Test-App7
 
 # Create a resource group
 az group create --name $resourceGroupName --location $location
