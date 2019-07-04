@@ -3,7 +3,7 @@
 # az account set --subscription $subscriptionId
 
 # Set resourcegroup and location
-resourceGroupName=Flask-resourcegroup-epam-name
+resourceGroupName=Flask-resourcegroup-epam-name1
 location=centralus
 
 # Set an admin login and password for your database
@@ -30,7 +30,7 @@ az group create --name $resourceGroupName --location $location
 az appservice plan create -n $planName -g $resourceGroupName -l $location --is-linux --number-of-workers 2 --sku P1v2
 
 # Create initial web app
-az webapp create -n $webappname -g $resourceGroupName -p $planName 
+az webapp create -n $webappname -g $resourceGroupName -p $planName -l $location
 
 # Create a container registry
 az acr create -n $registryName -g $resourceGroupName -l $location --sku Premium --admin-enabled true
