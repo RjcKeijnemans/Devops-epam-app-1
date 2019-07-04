@@ -1,7 +1,7 @@
 variables:
-  dockerId: my-docker-id  # Replace with your Docker ID for Docker Hub or the admin user name for the Azure Container Registry
-  imageName: my-image-name  # Replace with the name of the image you want to publish
-  pswd: my-docker-password # Replace with your password
+  dockerId: brandonepam  # Replace with your Docker ID for Docker Hub or the admin user name for the Azure Container Registry
+  imageName: friendlyreinierisdead  # Replace with the name of the image you want to publish
+  pswd: Interestingpassword1 # Replace with your password
 
 pool:
   vmImage: 'ubuntu-18.04' 
