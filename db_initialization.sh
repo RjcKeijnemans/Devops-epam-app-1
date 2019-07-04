@@ -19,7 +19,7 @@ startip=0.0.0.0
 endip=0.0.0.0
 
 # Set name of container registry, App Service Plan and Web App
-registryName=bctepamregistry
+registryName=bctepamregistry1
 planName=SampleAppServicePlan
 webappname=Flask-EPAM-Test-App
 
