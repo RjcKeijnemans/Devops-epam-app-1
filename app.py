@@ -73,7 +73,7 @@ def delete_api_data(val):
 @app.route('/insert_api_data_json/<vid>', methods=["GET", "POST"])
 def add_message(vid):
     insert = request.json
-    return insert['uuid1']
+    return insert['uuid1', 'uuid2', 'uuid3']
 
 
 if __name__ == '__main__':
