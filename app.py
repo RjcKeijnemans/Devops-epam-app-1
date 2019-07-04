@@ -73,7 +73,8 @@ def delete_api_data(val):
 @app.route('/insert_api_data_json/<row_id>', methods=["GET", "POST"])
 def add_message(row_id):
     insert = request.json
-    return insert[0]
+    print insert['uuid1']
+    return jsonify({"row_id":row_id})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
