@@ -76,7 +76,7 @@ def add_message():
     insert_uuid1 = insert['uuid1']
     insert_uuid2 = insert['uuid2']
     insert_uuid3 = insert['uuid3']
-    return '{} {} {}'.format(insert_uuid1, insert_uuid2, insert_uuid3)
+    return jsonify({"uuid1":insert_uuid1, "uuid2":insert_uuid2, "uuid3":insert_uuid3})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
