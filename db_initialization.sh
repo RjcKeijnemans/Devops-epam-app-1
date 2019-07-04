@@ -18,7 +18,8 @@ DBURL="server-10002.postgres.database.azure.com"
 startip=0.0.0.0
 endip=0.0.0.0
 
-# (Optional) Set name of App Service Plan and Web App
+# (Optional) Set name of container registry, App Service Plan and Web App
+registryName=bctepamregistry
 planName=SampleAppServicePlan
 webappname=Flask-EPAM-Test-App$RANDOM
 
@@ -30,6 +31,9 @@ az group create --name $resourceGroupName --location $location
 
 # Create load balancing app service plan
 az appservice plan create -n $planName -g $resourceGroupName -l $location --is-linux --number-of-workers 2 --sku P1v2
+
+# Create a container registry
+az acr create -n $registryName -g $resourceGroupName -l $location --sku Premium --admin-enabled true
 
 # Create a logical server in the resource group
 az postgres server create --name $servername --resource-group $resourceGroupName --location $location --admin-user $adminlogin --admin-password $password --sku-name B_Gen5_1
