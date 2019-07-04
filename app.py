@@ -70,8 +70,8 @@ def delete_api_data(val):
     return 'Succesfully deleted the row by id from the database table!'
 
 
-@app.route('/insert_api_data_json/<vid>', methods=["GET", "POST"])
-def add_message(vid):
+@app.route('/insert_api_data_json/<row_id>', methods=["GET", "POST"])
+def add_message(row_id):
     insert = request.json
     return insert['uuid1', 'uuid2', 'uuid3']
 
