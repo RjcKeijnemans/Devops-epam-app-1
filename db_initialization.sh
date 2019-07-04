@@ -3,7 +3,7 @@
 # az account set --subscription $subscriptionId
 
 # Set resourcegroup and location
-resourceGroupName=Flask-resourcegroup-epam-name1
+resourceGroupName=Flask-resourcegroup-epam-name2
 location=centralus
 
 # Set an admin login and password for your database
@@ -11,8 +11,8 @@ adminlogin=SqlAdmin
 password="ChangeYourAdminPassword1"
 
 # The logical server name has to be unique in the system
-servername=server-10002
-DBURL="server-10002.postgres.database.azure.com"
+servername=server-20003
+DBURL="server-20003.postgres.database.azure.com"
 
 # The ip address range that you want to allow to access your DB
 startip=0.0.0.0
