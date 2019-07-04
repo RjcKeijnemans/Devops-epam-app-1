@@ -69,5 +69,13 @@ def delete_api_data(val):
     db_session.commit()
     return 'Succesfully deleted the row by id from the database table!'
 
+
+@app.route('/insert_api_data_json', methods=['GET', 'POST'])
+def add_message():
+    insert = request.json
+ #   insert = jsonify({"uuid1":uuid1, "uuid2":uuid2, "uuid3":uuid3})
+    return insert['uuid1', 'uuid2', 'uuid3']
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
