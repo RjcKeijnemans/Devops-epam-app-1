@@ -47,7 +47,7 @@ def get_db_api_data() -> ApiData:
 
 @app.route("/", methods=["GET"])
 def app_index():
-    return "Available methods are: get_api_data,  insert_api_data/(v1,v2,v3),  delete_api_data/(id)"
+    return "Available methods are: get_api_data,  insert_api_data/(v1,v2,v3), insert_api_data_json, delete_api_data/(id)"
 
 
 @app.route("/get_api_data", methods=["GET"])
@@ -76,7 +76,12 @@ def add_message():
     insert_uuid1 = insert['uuid1']
     insert_uuid2 = insert['uuid2']
     insert_uuid3 = insert['uuid3']
-    return jsonify({"uuid1":insert_uuid1, "uuid2":insert_uuid2, "uuid3":insert_uuid3})
+
+    insert_json = ApiData(uuid1=insert_uuid1, uuid2=insert_uuid2, uuid3=insert_uuid3)
+    db_session.add(insert_json)
+    db_session.commit()
+    #return jsonify({"uuid1":insert_uuid1, "uuid2":insert_uuid2, "uuid3":insert_uuid3})
+    return "'Succesfully created a new id and inserted the values into the database table!'"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
