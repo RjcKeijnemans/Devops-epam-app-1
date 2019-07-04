@@ -70,11 +70,10 @@ def delete_api_data(val):
     return 'Succesfully deleted the row by id from the database table!'
 
 
-@app.route('/insert_api_data_json/<row_id>', methods=["GET", "POST"])
-def add_message(row_id):
+@app.route('/insert_api_data_json', methods=["GET", "POST"])
+def add_message():
     insert = request.json
-    print (insert['uuid1'])
-    return jsonify({"row_id":row_id})
+    return insert['uuid2']
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
