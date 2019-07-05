@@ -80,10 +80,7 @@ def add_message():
 
 @app.route("/update_api_data/<rid>,<values1>,<values2>,<values3>")
 def update_api_data(rid, values1, values2, values3):
-    row_id=ApiData.query.filter_by(id=rid).first()
-    row_id.uuid1 = values1
-    row_id.uuid2 = values2
-    row_id.uuid3 = values3
+    row_id = ApiData.query.filter_by(id=rid).update(dict(uuid1=values1, uuid2=values2, uuid3=values3))
     db_session.commit()
     return 'Succesfully updated the row by id from the database table!'
 
