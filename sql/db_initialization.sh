@@ -18,8 +18,7 @@ DBURL="server-20075.postgres.database.azure.com"
 startip=0.0.0.0
 endip=0.0.0.0
 
-# Set name of container registry, App Service Plan and Web App
-registryName=bctepamregistrytest
+# Set name of App Service Plan and Web App
 planName=SampleAppServicePlanTest
 webappname=Flask-EPAM-Test-App-Test
 
@@ -31,9 +30,6 @@ az appservice plan create -n $planName -g $resourceGroupName -l $location --is-l
 
 # Create initial web app
 az webapp create --name $webappname --resource-group $resourceGroupName --plan $planName --runtime "Python|3.7"
-
-# Create a container registry
-az acr create -n $registryName -g $resourceGroupName --sku Premium --admin-enabled true
 
 # Create a logical server in the resource group
 az postgres server create --name $servername --resource-group $resourceGroupName --location $location --admin-user $adminlogin --admin-password $password --sku-name B_Gen5_1
