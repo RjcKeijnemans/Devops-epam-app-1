@@ -7,7 +7,7 @@ cd q1
 git clone https://github.com/Xangliev/Devops-epam-app.git
 cd Devops-epam-app/sql
 
-# az login --service-principal -u APPID --password PASSWORD --tenant TENANTID
+# az login --service-principal -u $APPID --password $PASSWORD --tenant $TENANTID
 
-# az account set --subscription SUBSCRIPTIONID
+# az account set --subscription $SUBSCRIPTIONID
 # sh db_initialization.sh

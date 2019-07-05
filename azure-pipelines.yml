@@ -4,7 +4,7 @@ variables:
   pswd: my-docker-password # Replace with your password
 
 pool:
-  vmImage: 'ubuntu-18.04' 
+  vmImage: 'ubuntu-16.04' 
 
 steps:
 - script: |
@@ -13,4 +13,6 @@ steps:
     docker push $(dockerId)/$(imageName)
   env:
     pswd: $(dockerPassword)       
+
+
 
