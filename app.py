@@ -79,7 +79,7 @@ def add_message():
     return "'Succesfully created a new id and inserted the JSON values into the database table!'"
 
 @app.route("/update_api_data/<rid>,<values1>,<values2>,<values3>")
-def delete_api_data(rid, values1, values2, values3):
+def update_api_data(rid, values1, values2, values3):
     row_id=ApiData.query.filter_by(id=rid)
     row_id.uuid1 = values1
     row_id.uuid2 = values2
