@@ -9,7 +9,7 @@ steps:
 
    mkdir q1
    cd q1
-   git clone https://xangliev@github.com/xangliev/Devops-epam-app.git
+   git clone https://github.com/Xangliev/Devops-epam-app.git
    cd Devops-epam-app/deploy
    az login --service-principal -u $(service-principal) --password $(service-password) --tenant $(tenantId)
 
