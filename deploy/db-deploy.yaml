@@ -20,5 +20,26 @@ steps:
 
     # Connect to new database with user credentials and insert inital values
     PGPASSWORD='Interforaewg098!' psql -h $DBURL -U 'api_db_user'@$(server-name) -d 'api_db' --file='db1.sql'
-    
-  displayName: 'Command Line Script'
+
+- task: Docker@2
+  displayName: BuildnPush
+  inputs:
+    # Azure Devops Connected Docker Hub Registry
+    containerRegistry: 'docker-hub-connect'
+    # Docker Hub Repository
+    repository: $(repository-name)
+    tags: $(tag-name)
+
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Azure Web App Service Deploy'
+  inputs:
+    azureSubscription: $(subscription-id)
+    appType: webAppContainer
+    WebAppName: $(webapp-name)
+    DockerNamespace: index.docker.io
+    DockerRepository: $(repository-name)
+    DockerImageTag: $(tag-name)
+
+
+
+
