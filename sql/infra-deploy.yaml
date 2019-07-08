@@ -1,0 +1,20 @@
+steps:
+
+- script: |
+   sudo apt-get -y update
+   sudo apt-get -y install git
+   sudo apt-get -y install az
+   sudo apt-get install -y postgresql postgresql-contrib
+   mkdir q1
+   cd q1
+   git clone https://github.com/Xangliev/Devops-epam-app.git
+   cd Devops-epam-app/sql
+   
+   az login --service-principal -u 055406c7-88c4-4149-a15c-94c0e9830564 --password 51100f83-7a9c-4e34-b411-5e5c1e6f8b55 --tenant b5df7f0f-4483-4251-a82c-8e0da50b543e
+   
+   az account set --subscription 94fbadf8-645b-426b-8455-4de8b5a74bb5
+   sh db_initialization.sh
+   
+
+  displayName: 'Command Line Script'
+
