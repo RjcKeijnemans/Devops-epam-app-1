@@ -37,12 +37,6 @@ az postgres server create --name $servername --resource-group $resourceGroupName
 # Configure a firewall rule for the server
 az postgres server firewall-rule create --resource-group $resourceGroupName --server-name $servername --start-ip-address $startip --end-ip-address $endip --name allow-all-azure-ip
 
-# Create new database and user credentials
-#PGPASSWORD=$password psql -h $DBURL -U $adminlogin@$servername --file='db.sql' postgres
-
-# Connect to new database with user credentials and insert inital values
-#PGPASSWORD='Interforaewg098!' psql -h $DBURL -U 'api_db_user'@$servername -d 'api_db' --file='db1.sql'
-
 
 
 

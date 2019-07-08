@@ -1,0 +1,24 @@
+variables:
+- group: Infrastructure-Variables-EPAM-1
+steps:
+- script: |
+   sudo apt-get -y update
+   sudo apt-get -y install git
+   sudo apt-get -y install az
+   sudo apt-get install -y postgresql postgresql-contrib
+   mkdir q1
+   cd q1
+   git clone https://github.com/Xangliev/Devops-epam-app.git
+   cd Devops-epam-app/deploy
+
+   az login --service-principal -u $(service-principal) --password $(service-password) --tenant $(tenantId)
+
+   DBURL=$(server-name)+".postgres.database.azure.com"
+
+    # Create new database and user credentials
+    PGPASSWORD=$(admin-pass) psql -h $DBURL -U $(admin-user)@$(server-name) --file='db.sql' postgres
+
+    # Connect to new database with user credentials and insert inital values
+    PGPASSWORD='Interforaewg098!' psql -h $DBURL -U 'api_db_user'@$(server-name) -d 'api_db' --file='db1.sql'
+    
+  displayName: 'Command Line Script'
