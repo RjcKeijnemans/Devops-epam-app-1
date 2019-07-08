@@ -7,10 +7,12 @@ steps:
    sudo apt-get -y install az
    sudo apt-get install -y postgresql postgresql-contrib
 
-   mkdir q1
-   cd q1
-   git clone $(private-git-url)
-   cd Devops-epam-app/deploy
+   git clone $(private-git-url) --branch=master master
+   cd master
+    git remote rm origin
+    git remote add origin $(private-git-url))
+   cd deploy
+   
    az login --service-principal -u $(service-principal) --password $(service-password) --tenant $(tenantId)
 
     # Create new database and user credentials
