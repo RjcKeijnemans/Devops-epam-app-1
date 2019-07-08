@@ -6,9 +6,9 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy import Column, Integer, String
 
 user = 'api_db_user'
-subname = 'server-10002' 
+subname = 'server-20075' 
 pwd = 'Interforaewg098!'
-sub = 'server-10002.postgres.database.azure.com'
+sub = 'server-20075.postgres.database.azure.com'
 db = 'api_db'
 
 app = Flask(__name__)
