@@ -31,7 +31,8 @@ steps:
 - task: AzureRmWebAppDeployment@4
   displayName: 'Azure Web App Service Deploy'
   inputs:
-    azureSubscription: $(service-principal-var)
+    # Requires Service Connection with Azure Subscription
+    azureSubscription: $(subscription-id)
     appType: webAppContainer
     WebAppName: $(webapp-name)
     DockerNamespace: index.docker.io
