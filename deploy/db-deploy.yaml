@@ -13,8 +13,6 @@ steps:
 
    az login --service-principal -u $(service-principal) --password $(service-password) --tenant $(tenantId)
 
-   DBURL=$(server-name)+".postgres.database.azure.com"
-
     # Create new database and user credentials
     PGPASSWORD=$(admin-pass) psql -h $DBURL -U $(admin-user)@$(server-name) --file='db.sql' postgres
 
@@ -33,7 +31,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   displayName: 'Azure Web App Service Deploy'
   inputs:
-    azureSubscription: $(subscription-id)
+    azureSubscription: $(service-principal-var)
     appType: webAppContainer
     WebAppName: $(webapp-name)
     DockerNamespace: index.docker.io
