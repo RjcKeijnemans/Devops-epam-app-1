@@ -14,15 +14,15 @@ steps:
    az login --service-principal -u $(service-principal) --password $(service-password) --tenant $(tenantId)
 
     # Create new database and user credentials
-    PGPASSWORD=$(admin-pass) psql -h $(DBURL) -U $(admin-user)@$(server-name) --file='db.sql' postgres
+    PGPASSWORD=$(admin-pass) psql -h $(db-url) -U $(admin-user)@$(server-name) --file='db.sql' postgres
     # Connect to new database with user credentials and insert inital values
-    PGPASSWORD='Interforaewg098!' psql -h $(DBURL) -U 'api_db_user'@$(server-name) -d 'api_db' --file='db1.sql'
+    PGPASSWORD='Interforaewg098!' psql -h $(db-url) -U 'api_db_user'@$(server-name) -d 'api_db' --file='db1.sql'
 
 - task: Docker@2
   displayName: BuildnPush
   inputs:
     # Azure Devops Connected Docker Hub Registry
-    containerRegistry: 'docker-hub-connect'
+    containerRegistry: $(registry-name)
     # Docker Hub Repository
     repository: $(repository-name)
     tags: $(tag-name)
