@@ -44,8 +44,7 @@ def get_db_api_data() -> ApiData:
 
 @app.route("/", methods=["GET"])
 def app_index():
-    welcome = print ("Available methods are: \n -get_api_data, \n -insert_api_data/(v1,v2,v3), \n -insert_api_data_json, \n -delete_api_data/(id), \n -update_api_data/(id,v1,v2,v3) \n -search_api_data/(id_or_uuid,v1) \n\nWARNING: methods with multiple inputs are space sensitive.")
-    return welcome
+    print ("Available methods are: \n -get_api_data, \n -insert_api_data/(v1,v2,v3), \n -insert_api_data_json, \n -delete_api_data/(id), \n -update_api_data/(id,v1,v2,v3) \n -search_api_data/(id_or_uuid,v1) \n\nWARNING: methods with multiple inputs are space sensitive.")
 
 @app.route("/get_api_data", methods=["GET"])
 def get_api_data():
