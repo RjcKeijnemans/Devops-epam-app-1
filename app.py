@@ -99,9 +99,14 @@ def search_api_data(id_uuid,val):
         message = db_session.query(ApiData).filter(ApiData.uuid3 == val)
         db_session.commit()
     else:
-        message = "Bad Request"
+        result = "Bad Request"
         db_session.commit()
+        return result
 
     return message
+                                                                                                                        
+    search_result_list = list(message)
+    return jsonify(json_list=[i.serialize for i in search_result_list])
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
