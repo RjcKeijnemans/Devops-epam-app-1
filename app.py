@@ -103,7 +103,10 @@ def search_api_data(id_uuid,val):
         return result
                                                                                                                         
     search_result_list = list(message)
-    return jsonify(json_list=[i.serialize for i in search_result_list])
+    if search_result_list.len() < 1:
+        return "Entry does not exist"
+    else:
+        return jsonify(json_list=[i.serialize for i in search_result_list])
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
