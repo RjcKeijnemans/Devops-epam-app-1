@@ -102,8 +102,6 @@ def search_api_data(id_uuid,val):
         result = "Bad Request"
         db_session.commit()
         return result
-
-    return message
                                                                                                                         
     search_result_list = list(message)
     return jsonify(json_list=[i.serialize for i in search_result_list])
