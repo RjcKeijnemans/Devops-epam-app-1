@@ -103,7 +103,7 @@ def search_api_data(id_uuid,val):
         return result
                                                                                                                         
     search_result_list = list(message)
-    if search_result_list.len() < 1:
+    if len(search_result_list) < 1:
         return "Entry does not exist"
     else:
         return jsonify(json_list=[i.serialize for i in search_result_list])
