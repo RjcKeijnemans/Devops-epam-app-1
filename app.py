@@ -87,16 +87,16 @@ def update_api_data(rid, values1, values2, values3):
 @app.route("/search_api_data/<id_uuid>,<val>", methods = ['GET', 'POST'])
 def search_api_data(id_uuid,val):
     if id_uuid == 'id':
-        message = ApiData.query.filter_by(id=val)
+        message = db_session.query(ApiData).filter(ApiData.id == val)
         db_session.commit()
     elif id_uuid == 'uuid1':
-        message = ApiData.query.filter_by(uuid1=val)
+        message = db_session.query(ApiData).filter(ApiData.uuid1 == val)
         db_session.commit()
     elif id_uuid == 'uuid2':
-        message = ApiData.query.filter_by(uuid2=val)
+        message = db_session.query(ApiData).filter(ApiData.uuid2 == val)
         db_session.commit()
     elif id_uuid == 'uuid3':
-        message = ApiData.query.filter_by(uuid3=val)
+        message = db_session.query(ApiData).filter(ApiData.uuid3 == val)
         db_session.commit()
     else:
         message = "Bad Request"
