@@ -84,7 +84,7 @@ def update_api_data(rid, values1, values2, values3):
     db_session.commit()
     return 'Succesfully updated the row by id from the database table!'
 
-@app.route("/search_api_data/<id_uuid>,<val>")
+@app.route("/search_api_data/<id_uuid>,<val>", methods = ['GET', 'POST'])
 def search_api_data(id_uuid,val):
     if id_uuid == 'id':
         message = ApiData.query.filter_by(id=val)
