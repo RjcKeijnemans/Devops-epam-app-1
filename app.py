@@ -99,7 +99,7 @@ def search_api_data(id_uuid,val):
         message = db_session.query(ApiData).filter(ApiData.uuid3 == val)
         db_session.commit()
     else:
-        message = "Bad Request!"
+        message = "Bad Request"
         db_session.commit()
         return message
 
