@@ -101,7 +101,7 @@ def search_api_data(id_uuid,val):
     else:
         message = "Bad Request"
         db_session.commit()
-        return message
 
+    return message
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
