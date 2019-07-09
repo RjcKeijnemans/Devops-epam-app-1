@@ -45,7 +45,7 @@ def get_db_api_data() -> ApiData:
 
 @app.route("/", methods=["GET"])
 def app_index():
-    return "Available methods are: get_api_data,  insert_api_data/(v1,v2,v3), insert_api_data_json, delete_api_data/(id), update_api_data/(id,v1,v2,v3)"
+    return "Available methods are: get_api_data,  insert_api_data/(v1,v2,v3), insert_api_data_json, delete_api_data/(id), update_api_data/(id,v1,v2,v3), search_api_data/(id or uuid, value)"
 
 @app.route("/get_api_data", methods=["GET"])
 def get_api_data():
@@ -83,6 +83,32 @@ def update_api_data(rid, values1, values2, values3):
     row_id = ApiData.query.filter_by(id=rid).update(dict(uuid1=values1, uuid2=values2, uuid3=values3))
     db_session.commit()
     return 'Succesfully updated the row by id from the database table!'
+
+@app.route("/search_api_data/<id_uuid>,<val>")
+def search_api_data(id_uuid,val):
+    if id_uuid == 'id':
+        message = ApiData.query.filter_by(id=val)
+        db_session.commit()
+    elif id_uuid == 'uuid1':
+        message = db_session.query(ApiData.id).\
+        filter(ApiData.uuid1 == val).\
+        scalar()
+        db_session.commit()
+    elif id_uuid == 'uuid2':
+        message = db_session.query(ApiData.id).\
+        filter(ApiData.uuid2 == val).\
+        scalar()
+        db_session.commit()
+    elif id_uuid == 'uuid3':
+        message = db_session.query(ApiData.id).\
+        filter(ApiData.uuid3 == val).\
+        scalar()
+        db_session.commit()
+    else:
+        message = "Bad Request"
+        db_session.commit()
+
+    return message 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
