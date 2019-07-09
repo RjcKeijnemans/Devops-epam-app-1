@@ -38,25 +38,13 @@ class ApiData(Base):
             'uuid2': self.uuid2,
             'uuid3': self.uuid3
         }
-class color:
-   PURPLE = '\033[95m'
-   CYAN = '\033[96m'
-   DARKCYAN = '\033[36m'
-   BLUE = '\033[94m'
-   GREEN = '\033[92m'
-   YELLOW = '\033[93m'
-   RED = '\033[91m'
-   BOLD = '\033[1m'
-   UNDERLINE = '\033[4m'
-   END = '\033[0m'
-
 def get_db_api_data() -> ApiData:
     api_data = db_session.query(ApiData)
     return api_data
 
 @app.route("/", methods=["GET"])
 def app_index():
-    return "Available methods are:" + color.BOLD + "get_api_data, insert_api_data/(v1,v2,v3), insert_api_data_json, delete_api_data/(id), update_api_data/(id,v1,v2,v3) and search_api_data/(id_or_uuid,v1)." + color.END + color.RED + "Warning: methods with multiple inputs are space sensitive." + color.END
+    return "Available methods are: \n get_api_data, \n insert_api_data/(v1,v2,v3), \n insert_api_data_json, \n delete_api_data/(id), \n update_api_data/(id,v1,v2,v3) and \n search_api_data/(id_or_uuid,v1). \n  WARNING: methods with multiple inputs are space sensitive."
 
 @app.route("/get_api_data", methods=["GET"])
 def get_api_data():
