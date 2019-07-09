@@ -1,5 +1,5 @@
 variables:
-- group: Infrastructure-Variables-EPAM-1
+- group: Infrastructure-Variables-EPAM-2
 steps:
 - task: Docker@2
   displayName: BuildnPush
