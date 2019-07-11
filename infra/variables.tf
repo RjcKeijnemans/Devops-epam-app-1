@@ -56,3 +56,11 @@ variable "end_ip" {
   type = "string"
   default = "0.0.0.0"
 }
+
+output "database_endpoint" {
+  value = "${var.server_name}.postgres.database.azure.com"
+}
+
+output "appservice_endpoint" {
+  value = "${var.web_name}.azurewebsites.net"
+}
