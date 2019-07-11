@@ -1,15 +1,6 @@
 variables:
 - group: Infrastructure-Variables-EPAM-2
 steps:
-# Build docker image
-- task: Docker@2
-  displayName: BuildnPush
-  inputs:
-    # Azure Devops Connected Docker Hub Registry
-    containerRegistry: $(registry-name)
-    # Docker Hub Repository
-    repository: $(repository-name)
-    tags: latest
 
 # Deploy to cluster
 - task: Kubernetes@1
