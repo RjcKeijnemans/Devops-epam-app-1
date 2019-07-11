@@ -17,5 +17,5 @@ steps:
   inputs:
     kubernetesServiceEndpoint: 'aks-connect-delete'
     command: apply
-    arguments: -f deploy/k8/k8-attributes.yaml
+    arguments: -f deploy/k8-attributes.yaml
 
