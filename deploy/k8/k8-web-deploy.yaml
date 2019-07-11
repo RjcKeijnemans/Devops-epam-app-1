@@ -6,7 +6,7 @@ steps:
 - task: Kubernetes@1
   displayName: 'Deploy to Cluster'
   inputs:
-    kubernetesServiceEndpoint: 'azure-aks-connect-delete'
+    kubernetesServiceEndpoint: 'aks-connect-delete'
     command: apply
     arguments: -f deploy/k8/k8-attributes.yaml
 
