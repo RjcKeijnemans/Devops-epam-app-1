@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: flask
+      tier: frontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: flask
+        tier: frontend
+    spec:
+      containers:
+      - name: flask-web-api
+        image: brandonepam/friendlyreinier:latest
+        ports:
+        - containerPort: 80
