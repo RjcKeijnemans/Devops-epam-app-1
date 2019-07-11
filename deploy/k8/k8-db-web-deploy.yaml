@@ -28,7 +28,7 @@ steps:
     repository: $(repository-name)
     tags: latest
 
-# Deploy to cluster
+# Deploy to cluster (requires service connection and deployed cluster)
 - task: Kubernetes@1
   displayName: 'Deploy to Cluster'
   inputs:
