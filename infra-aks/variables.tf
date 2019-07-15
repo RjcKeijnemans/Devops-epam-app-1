@@ -38,6 +38,14 @@ variable "admin_pass" {
   default = "ChangeYourAdminPassword1"
 }
 
+variable "start_ip" {
+  type = "string"
+  default = "0.0.0.0"
+}
+variable "end_ip" {
+  type = "string"
+  default = "0.0.0.0"
+}
 variable "kluster_name" {
   type = "string"
   default = "flask-aks"
