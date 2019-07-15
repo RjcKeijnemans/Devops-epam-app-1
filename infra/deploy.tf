@@ -2,7 +2,7 @@ provider "azurerm" {
   version = "=1.28.0"
 }
 # Create a resource group
-  resource "azurerm_resource_group" "devops-test"{
+resource "azurerm_resource_group" "devops-test" {
   name     = var.resource_group_name
   location = var.location
 }
@@ -17,8 +17,8 @@ resource "azurerm_app_service_plan" "devops-test" {
   reserved            = "true"
 
   sku {
-    tier = "Standard"
-    size = "S1"
+    tier     = "Standard"
+    size     = "S1"
     capacity = 2
   }
 }
@@ -33,16 +33,16 @@ resource "azurerm_app_service" "devops-test" {
   https_only          = "true"
 
   site_config {
-    python_version  = 3.4
+    python_version = 3.4
   }
 }
 
 # Create PostgreSQL server and setup admin credentials
 resource "azurerm_postgresql_server" "devops-test" {
   depends_on          = [azurerm_resource_group.devops-test]
-  name                =  var.server_name
-  location            =  var.location
-  resource_group_name =  var.resource_group_name
+  name                = var.server_name
+  location            = var.location
+  resource_group_name = var.resource_group_name
 
   sku {
     name     = "B_Gen5_2"
