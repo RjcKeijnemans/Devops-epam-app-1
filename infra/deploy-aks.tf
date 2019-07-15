@@ -9,6 +9,7 @@ provider "azurerm" {
 
 # Create Kubernetes Cluster
 resource "azurerm_kubernetes_cluster" "devops-test" {
+  depends_on          = [azurerm_resource_group.devops-test]
   name                = var.kluster-name
   location            = var.location
   resource_group_name = var.resource_group_name
