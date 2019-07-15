@@ -28,11 +28,14 @@ steps:
     repository: $(repository-name)
     tags: latest
 
-# Deploy to cluster (requires service connection and deployed cluster)
 - task: Kubernetes@1
-  displayName: 'Deploy to Cluster'
+  displayName: 'kubectl apply'
   inputs:
-    kubernetesServiceEndpoint: 'aks-connect-delete'
+    connectionType: 'Azure Resource Manager'
+    azureSubscriptionEndpoint: $(subscription-endpoint)
+    azureResourceGroup: $(resource-group)
+    kubernetesCluster: $(kluster-name)
     command: apply
-    arguments: -f deploy/k8-attributes.yaml
+    arguments: '-f deploy/k8-attributes.yaml'
+
 

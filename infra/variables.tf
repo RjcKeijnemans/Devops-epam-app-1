@@ -54,6 +54,11 @@ variable "end_ip" {
   default = "0.0.0.0"
 }
 
+variable "kluster_name" {
+  type = "string"
+  default = "flask-aks"
+}
+
 # Output Variables
 output "database_endpoint" {
   value = "${var.server_name}.postgres.database.azure.com"
