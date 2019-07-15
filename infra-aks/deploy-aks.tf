@@ -18,7 +18,7 @@ resource "azurerm_kubernetes_cluster" "devops-test" {
   agent_pool_profile {
     name            = "flask"
     count           = 1
-    vm_size         = "Standard_B2s_v2"
+    vm_size         = "Standard_B2s"
     os_type         = "Linux"
     os_disk_size_gb = 30
   }
