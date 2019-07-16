@@ -13,7 +13,12 @@ steps:
 
    az login --service-principal -u $(service-principal) --password $(service-password) --tenant $(tenantId)
 
-       # Install Helm 
+    # Create new database and user credentials
+    PGPASSWORD=$(admin-pass) psql -h $(db-url) -U $(admin-user)@$(server-name) --file='db.sql' postgres
+    # Connect to new database with user credentials and insert inital values
+    PGPASSWORD='Interforaewg098!' psql -h $(db-url) -U 'api_db_user'@$(server-name) -d 'api_db' --file='db1.sql'
+
+    # Install Helm 
     sudo apt install linuxbrew-wrapper -y
     sudo snap install helm --classic
 
@@ -21,17 +26,11 @@ steps:
     az aks get-credentials -g $(resource-group) -n $(kluster-name)
 
     # Install Prometheus & Grafana 
-    helm init 
+    helm init --upgrade
     helm repo add coreos https://s3-eu-west-1.amazonaws.com/coreos-charts/stable/
     kubectl -n kube-system wait --for=condition=Ready pod -l name=tiller --timeout=300s
-    helm upgrade --install
     helm install coreos/prometheus-operator --name prometheus-operator --namespace monitoring
     helm install coreos/kube-prometheus --name kube-prometheus --namespace monitoring
-
-    # Create new database and user credentials
-    PGPASSWORD=$(admin-pass) psql -h $(db-url) -U $(admin-user)@$(server-name) --file='db.sql' postgres
-    # Connect to new database with user credentials and insert inital values
-    PGPASSWORD='Interforaewg098!' psql -h $(db-url) -U 'api_db_user'@$(server-name) -d 'api_db' --file='db1.sql'
     
 # Build Image and push to registry
 - task: Docker@2
@@ -43,6 +42,7 @@ steps:
     repository: $(repository-name)
     tags: latest
 
+# Deploy container to cluster
 - task: Kubernetes@1
   displayName: 'kubectl apply'
   inputs:
