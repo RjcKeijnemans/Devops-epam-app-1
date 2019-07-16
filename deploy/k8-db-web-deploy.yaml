@@ -21,9 +21,9 @@ steps:
     az aks get-credentials -g $(resource-group) -n $(kluster-name)
 
     # Install Prometheus & Grafana 
-    helm init --tiller-tls-verify
+    helm init 
+    helm repo add coreos https://s3-eu-west-1.amazonaws.com/coreos-charts/stable/
     kubectl -n kube-system wait --for=condition=Ready pod -l name=tiller --timeout=300s
-    helm repo update
     helm install coreos/prometheus-operator --name prometheus-operator --namespace monitoring
     helm install coreos/kube-prometheus --name kube-prometheus --namespace monitoring
 
