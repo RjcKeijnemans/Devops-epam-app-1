@@ -1,7 +1,6 @@
 variables:
 - group: Infrastructure-Variables-EPAM-1
 steps:
-# Deploy SQL Database
 - script: |
    sudo apt-get -y update
    sudo apt-get -y install git
