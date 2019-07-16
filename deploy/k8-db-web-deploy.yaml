@@ -25,7 +25,7 @@ steps:
     # Access AKS Cluster
     az aks get-credentials -g $(resource-group) -n $(kluster-name)
 
-    # Install Prometheus & Grafana
+    # Install Prometheus & Grafana 
     helm init
     helm install coreos/prometheus-operator --name prometheus-operator --namespace monitoring
     helm install coreos/kube-prometheus --name kube-prometheus --namespace monitoring
