@@ -77,18 +77,6 @@ data "aws_subnet_ids" "flask" {
   vpc_id = data.aws_vpc.flask.id
 }
 
-data "aws_security_groups" "flask" {
-  depends_on = [aws_elastic_beanstalk_environment.flask]
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.flask.id]
-  }
-  filter {
-    name   = "group-name"
-    values = ["*awseb*"]
-  }
-}
-
 # Create Server
 resource "aws_db_instance" "postgres" {
   depends_on           = [aws_security_group.postgres]     
@@ -97,7 +85,7 @@ resource "aws_db_instance" "postgres" {
   storage_type         = "gp2"
   engine               = "postgres"
   instance_class       = "db.t2.micro"
-  publicly_accessible  = true
+  publicly_accessible  = true # Set to false after deployment
   skip_final_snapshot  = true
   username             = var.admin_name
   password             = var.admin_pass
@@ -113,17 +101,9 @@ resource "aws_db_subnet_group" "postgres" {
 resource "aws_security_group" "postgres" {
   depends_on  = [aws_elastic_beanstalk_environment.flask]
   name        = "postgres_inbound"
-  description = "Allow inbound traffic from ELB instance"
+  description = "Allow inbound traffic from instances within VPC"
   vpc_id      =  data.aws_vpc.flask.id
 
-  ingress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    security_groups = data.aws_security_groups.flask.ids
-  }
-
-# Remove this ingress rule after initial deployment
   ingress {
     from_port   = 0
     to_port     = 0
