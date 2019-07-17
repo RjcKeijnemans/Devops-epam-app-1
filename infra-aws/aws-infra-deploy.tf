@@ -6,7 +6,7 @@ provider "aws" {
 
 # Beanstalk instance profile
 resource "aws_iam_instance_profile" "beanstalk" {
-  name  = "beanstalk-ec2-user-epam-profile"
+  name  = "beanstalk-ec2-user-profile-epam"
   role = "${aws_iam_role.beanstalk.name}"
 }
 
