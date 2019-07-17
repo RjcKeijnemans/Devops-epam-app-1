@@ -97,6 +97,7 @@ resource "aws_db_instance" "postgres" {
   storage_type         = "gp2"
   engine               = "postgres"
   instance_class       = "db.t2.micro"
+  publicly_accessible  = true
   username             = var.admin_name
   password             = var.admin_pass
   db_subnet_group_name = "${aws_db_subnet_group.postgres.name}"
@@ -119,6 +120,14 @@ resource "aws_security_group" "postgres" {
     to_port     = 0
     protocol    = "-1"
     security_groups = data.aws_security_groups.flask.ids
+  }
+
+# Remove this ingress rule after initial deployment
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {

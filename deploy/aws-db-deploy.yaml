@@ -7,7 +7,7 @@ steps:
    pip install awscli –upgrade
    sudo apt-get -y install git
    sudo apt-get install -y postgresql postgresql-contrib
-   git clone https://github.com/Xangliev/terraform-test.git
+   git clone https://github.com/Xangliev/Devops-epam-app.git
 
 # Connect to AWS DB instance // Make sure the db instance is publically accessible
 - task: AmazonWebServices.aws-vsts-tools.AWSShellScript.AWSShellScript@1
@@ -16,7 +16,7 @@ steps:
     regionName: $(region-name)
     scriptType: inline
     inlineScript: |
-      cd terraform-test
+      cd Devops-epam-app/deploy
       # Create new database and user credentials and insert inital values
       psql -h $(db-url) --port=$(port) -U $(admin-user) --password=($admin-pass) -d $(server-name) --file='db.sql' 
       # Connect to new database with user credentials and insert inital values

@@ -48,11 +48,3 @@ variable "admin_pass" {
 output "db_endoint" {
   value = "${aws_db_instance.postgres.endpoint}"
 }
-
-output "env_id" {
-  value = "${aws_elastic_beanstalk_environment.flask.id}"
-}
-
-output "env_name" {
-  value = "${aws_elastic_beanstalk_environment.flask.name}"
-}
