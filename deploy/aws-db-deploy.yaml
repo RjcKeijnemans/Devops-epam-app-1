@@ -18,6 +18,6 @@ steps:
     inlineScript: |
       cd Devops-epam-app/deploy
       # Create new database and user credentials and insert inital values
-      psql -h $(db-url) --port=$(port) -U $(admin-user) --password -d $(server-name) --file='db.sql' 
+      PGPASSWORD=$(admin-pass) psql -h $(db-url) --port=$(port) -U $(admin-user) -d $(server-name) --file='db.sql' 
       # Connect to new database with user credentials and insert inital values
-      psql -h $(db-url) --port=$(port) -U 'api_db_user' --password -d 'api_db' --file='db1.sql'
+      PGPASSWORD='Interforaewg098!' psql -h $(db-url) --port=$(port) -U 'api_db_user' -d 'api_db' --file='db1.sql'
