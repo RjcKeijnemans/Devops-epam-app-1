@@ -9,7 +9,7 @@ steps:
    git clone https://github.com/Xangliev/Devops-epam-app.git
    sudo apt-get install -y postgresql postgresql-contrib
 
-# Connect to AWS DB instance // Make sure the db instance is publically accessible
+# Connect to AWS DB instance // Make sure the db instance is publicly accessible
 - task: AmazonWebServices.aws-vsts-tools.AWSShellScript.AWSShellScript@1
   displayName: 'AWS Shell Script'
   inputs:
