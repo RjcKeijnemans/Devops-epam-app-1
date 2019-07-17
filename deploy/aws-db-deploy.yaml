@@ -16,8 +16,8 @@ steps:
     regionName: $(region-name)
     scriptType: inline
     inlineScript: |
-      cd devops-epam-app/deploy
+      cd Devops-epam-app/deploy
       # Create new database and user credentials and insert inital values
-      psql -h $(db-url) --port=$(port) -U $(admin-user) --password=$(admin-pass) -d $(server-name) --file='db.sql' 
+      psql -h $(db-url) --port=$(port) -U $(admin-user) --password -d $(server-name) --file='db.sql' 
       # Connect to new database with user credentials and insert inital values
-      psql -h $(db-url) --port=$(port) -U 'api_db_user' --password='Interforaewg098!' -d 'api_db' --file='db1.sql'
+      psql -h $(db-url) --port=$(port) -U 'api_db_user' --password -d 'api_db' --file='db1.sql'
