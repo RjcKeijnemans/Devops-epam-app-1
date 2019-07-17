@@ -6,8 +6,8 @@ steps:
    pip install awscli
    pip install awscli –upgrade
    sudo apt-get -y install git
-   sudo apt-get install -y postgresql postgresql-contrib
    git clone https://github.com/Xangliev/Devops-epam-app.git
+   sudo apt-get install -y postgresql postgresql-contrib
 
 # Connect to AWS DB instance // Make sure the db instance is publically accessible
 - task: AmazonWebServices.aws-vsts-tools.AWSShellScript.AWSShellScript@1
@@ -16,9 +16,9 @@ steps:
     regionName: $(region-name)
     scriptType: inline
     inlineScript: |
-      cd devops-epam-test
+      cd devops-epam-app
       cd deploy
       # Create new database and user credentials and insert inital values
-      psql -h $(db-url) --port=$(port) -U $(admin-user) --password=($admin-pass) -d $(server-name) --file='db.sql' 
+      psql -h $(db-url) --port=$(port) -U $(admin-user) --password=$(admin-pass) -d $(server-name) --file='db.sql' 
       # Connect to new database with user credentials and insert inital values
       psql -h $(db-url) --port=$(port) -U 'api_db_user' --password='Interforaewg098!' -d 'api_db' --file='db1.sql'
