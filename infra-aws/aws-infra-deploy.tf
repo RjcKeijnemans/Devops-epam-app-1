@@ -6,7 +6,7 @@ provider "aws" {
 
 # Beanstalk instance profile
 resource "aws_iam_instance_profile" "beanstalk" {
-  name  = "beanstalk-ec2-user-epam"
+  name  = "beanstalk-ec2-user-epam-profile"
   role = "${aws_iam_role.beanstalk.name}"
 }
 
@@ -98,6 +98,7 @@ resource "aws_db_instance" "postgres" {
   engine               = "postgres"
   instance_class       = "db.t2.micro"
   publicly_accessible  = true
+  skip_final_snapshot  = true
   username             = var.admin_name
   password             = var.admin_pass
   db_subnet_group_name = "${aws_db_subnet_group.postgres.name}"
