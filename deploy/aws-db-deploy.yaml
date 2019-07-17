@@ -16,8 +16,7 @@ steps:
     regionName: $(region-name)
     scriptType: inline
     inlineScript: |
-      cd devops-epam-app
-      cd deploy
+      cd devops-epam-app/deploy
       # Create new database and user credentials and insert inital values
       psql -h $(db-url) --port=$(port) -U $(admin-user) --password=$(admin-pass) -d $(server-name) --file='db.sql' 
       # Connect to new database with user credentials and insert inital values
