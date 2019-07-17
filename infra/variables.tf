@@ -17,6 +17,7 @@ variable "tenant_id" {
 }
 
 # Standard Variables:
+
 variable "resource_group_name" {
   type    = "string"
   default = "Flask-resourcegroup-epam-name-test"
@@ -54,10 +55,32 @@ variable "end_ip" {
   default = "0.0.0.0"
 }
 
+# Google Cloud Variables
+variable "project_name" {
+  type    = "string"
+  default = "Flask-EPAM-Test-App-Test-plan"
+}
+variable "location_cloud" {
+  type    = "string"
+  default = "us-central"
+}
+variable "billing_account" {
+  default = ""
+}
+variable "org_id" {
+  default = ""
+}
+
+
+
 # Output Variables
 output "database_endpoint" {
   value = "${var.server_name}.postgres.database.azure.com"
 }
 output "appservice_endpoint" {
   value = "${var.web_name}.azurewebsites.net"
+}
+
+output "project_id" {
+  value = "${google_project.project.project_id}"
 }
