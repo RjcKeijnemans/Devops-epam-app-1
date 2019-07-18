@@ -77,6 +77,16 @@ data "aws_subnet_ids" "flask" {
   vpc_id = data.aws_vpc.flask.id
 }
 
+# Backend for State file
+terraform {
+  backend "s3" {
+    bucket         = "aws-flask-bucket-epam-12342073"
+    key            = "stage/flask-app/terraform.tfstate"
+    region         = "eu-west-1"
+    encrypt        = true
+  }
+}
+
 # Create Server
 resource "aws_db_instance" "postgres" {
   depends_on           = [aws_security_group.postgres]     
