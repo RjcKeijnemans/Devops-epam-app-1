@@ -3,13 +3,13 @@ provider "azurerm" {
 }
 
 # Add backend
-terraform {
-  backend "azurerm" {
-    storage_account_name = "terraformteststoragefore"
-    container_name       = "production-tf"
-    key                  = "prod.terraform.tfstate"
-  }
-}
+#terraform {
+#  backend "azurerm" {
+#    storage_account_name = "terraformteststoragefore"
+#    container_name       = "production-tf"
+#    key                  = "prod.terraform.tfstate"
+#  }
+#}
 
 # Create a resource group
   resource "azurerm_resource_group" "devops-test" {
