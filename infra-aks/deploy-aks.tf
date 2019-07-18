@@ -7,7 +7,7 @@ terraform {
   backend "azurerm" {
     storage_account_name = "terraformteststoragefore"
     container_name       = "production-tf"
-    key                  = "aks.terraform.tfstate"
+    key                  = "prod.terraform.tfstate"
   }
 }
 
