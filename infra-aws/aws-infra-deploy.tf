@@ -4,6 +4,16 @@ provider "aws" {
   secret_key = var.secret_key
 }
 
+# Backend for State file
+terraform {
+  backend "s3" {
+    bucket         = "aws-flask-bucket-epam-12342073"
+    key            = "stage/flask-app/terraform.tfstate"
+    region         = "eu-west-1"
+    encrypt        = true
+  }
+}
+
 # Beanstalk instance profile
 resource "aws_iam_instance_profile" "beanstalk" {
   name  = "beanstalk-ec2-userprofile1-epam"
@@ -75,16 +85,6 @@ data "aws_vpc" "flask" {
 
 data "aws_subnet_ids" "flask" {
   vpc_id = data.aws_vpc.flask.id
-}
-
-# Backend for State file
-terraform {
-  backend "s3" {
-    bucket         = "aws-flask-bucket-epam-12342073"
-    key            = "stage/flask-app/terraform.tfstate"
-    region         = "eu-west-1"
-    encrypt        = true
-  }
 }
 
 # Create Server
