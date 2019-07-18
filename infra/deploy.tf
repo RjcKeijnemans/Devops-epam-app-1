@@ -83,9 +83,3 @@ resource "azurerm_postgresql_firewall_rule" "test" {
   end_ip_address      = var.end_ip
 }
 
-# Create a resource group
-resource "azurerm_resource_group" "devops-test1" {
-  name     = "newdevopsepamtestgrouphihi"
-  location = var.location
-}
-
