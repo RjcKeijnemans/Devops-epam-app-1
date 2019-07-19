@@ -24,7 +24,7 @@ steps:
   displayName: 'S3 Upload: Bucket'
   inputs:
     awsCredentials: 'AWS-Connect'
-    regionName: $(region-name)
+    regionName: $(region-name2)
     bucketName: 'aws-flask-bucket-epam-12342073'
     sourceFolder: 'deploy/aws-app'
     targetFolder: 'stage/flaskapp'
@@ -36,7 +36,7 @@ steps:
   displayName: 'Deploy to Elastic Beanstalk'
   inputs:
     awsCredentials: 'AWS-Connect'
-    regionName: $(region-name)
+    regionName: $(region-name2)
     applicationName: $(webapp-name)
     environmentName: $(env-name)
     applicationType: s3
