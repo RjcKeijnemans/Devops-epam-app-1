@@ -7,7 +7,7 @@ from sqlalchemy import Column, Integer, String
 
 user = 'api_db_user'
 pwd = 'Interforaewg098!'
-sub = 'terraform-20190718115528205900000001.cph2qhkbik7q.eu-west-1.rds.amazonaws.com'
+sub = 'terraform-20190719074458598800000001.cph2qhkbik7q.eu-west-1.rds.amazonaws.com'
 port = '5432'
 db = 'api_db'
 
