@@ -15,7 +15,7 @@ steps:
    # Initalize Terraform with AWS creds and backend
    terraform init -backend-config=$(acs_key) -backend-config=$(scr_key)
    # Deploy terraform infrastructure
-   terraform apply -var $(acs_key) -var $(scr_key)
+   terraform apply -var $(acs_key) -var $(scr_key) -auto-aprove
 
 
 
