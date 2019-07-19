@@ -1,21 +1,11 @@
 variables:
 - group: Infrastructure-Variables-EPAM-3
 steps:
-# Build Image and push to registry
-- task: Docker@2
-  displayName: Build and Push Image
-  inputs:
-    # Azure Devops Connected Docker Hub Registry
-    containerRegistry: $(registry-name)
-    # Docker Hub Repository
-    repository: $(repository-name)
-    Dockerfile: 'deploy/aws-app/Dockerfile'
-    tags: aws
-
 # Create a zip file from app for elastic beanstalk deployment
 - task: ArchiveFiles@2
   displayName: 'Zip AWS Dockerfile'
   inputs:
+    includeRootFolder: false
     rootFolderOrFile: 'deploy/aws-app'
     archiveFile: flaskapp.zip
 
@@ -26,7 +16,6 @@ steps:
     awsCredentials: 'AWS-Connect'
     regionName: $(region-name2)
     bucketName: 'aws-flask-bucket-epam-12342073'
-    sourceFolder: 'deploy/aws-app'
     targetFolder: 'stage/flaskapp'
     globExpressions: flaskapp.zip
     createBucket: true
@@ -44,3 +33,14 @@ steps:
     deploymentBundleKey: 'stage/flaskapp/flaskapp.zip'
     logRequest: true
     logResponse: true
+
+# Build Image and push to registry
+- task: Docker@2
+  displayName: Build and Push Image
+  inputs:
+    # Azure Devops Connected Docker Hub Registry
+    containerRegistry: $(registry-name)
+    # Docker Hub Repository
+    repository: $(repository-name)
+    Dockerfile: 'deploy/aws-app/Dockerfile'
+    tags: aws
