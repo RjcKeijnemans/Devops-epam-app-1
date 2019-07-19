@@ -4,7 +4,8 @@ steps:
 - script: |
    sudo apt-get -y update
    sudo apt-get -y install git
-
+   sudo apt-get -y install wget unzip
+   
    # Download Terraform
    wget https://releases.hashicorp.com/terraform/0.12.4/terraform_0.12.4_linux_amd64.zip
    sudo unzip ./terraform_0.12.4_linux_amd64.zip -d /usr/local/bin/
