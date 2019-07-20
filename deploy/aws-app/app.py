@@ -48,7 +48,7 @@ def app_index():
 
 @app.route("/get_api_data")
 def get_api_data():
-    retrieve = db_session.query(ApiData)
+    retrieve = db_session.query(ApiData).order_by(ApiData.id)
     db_session.commit()
     search_result_list = list(retrieve)
     resp = jsonify(json_list=[i.serialize for i in search_result_list])
