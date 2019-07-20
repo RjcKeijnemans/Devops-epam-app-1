@@ -52,10 +52,9 @@ def get_api_data():
     db_session.commit()
     search_result_list = list(retrieve)
     resp = jsonify(json_list=[i.serialize for i in search_result_list])
-    resp.status_code = 200
     return resp
 
-@app.route("/insert_api_data/<values1>,<values2>,<values3>", methods=["POST"])
+@app.route("/insert_api_data/<values1>,<values2>,<values3>")
 def insert_api_data(values1, values2, values3):
     insert = ApiData(uuid1=values1, uuid2=values2, uuid3=values3)
     db_session.add(insert)
