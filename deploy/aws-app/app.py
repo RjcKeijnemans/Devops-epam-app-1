@@ -39,7 +39,7 @@ class ApiData(Base):
             'uuid3': self.uuid3
         }
 def get_db_api_data() -> ApiData:
-    api_data = db_session.query(ApiData)
+    api_data = db_session.query(ApiData).all()
     return api_data
 
 @app.route("/", methods=["GET"])
@@ -49,7 +49,7 @@ def app_index():
 @app.route("/get_api_data")
 def get_api_data():
     resp = jsonify(json_list=[i.serialize for i in get_db_api_data().all()])
-    resp.status_code = 300
+    resp.status_code = 200
     return resp
 
 @app.route("/insert_api_data/<values1>,<values2>,<values3>")
