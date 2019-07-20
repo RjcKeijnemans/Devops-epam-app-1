@@ -48,8 +48,10 @@ def app_index():
 
 @app.route("/get_api_data")
 def get_api_data():
-    resp = jsonify(json_list=[i.serialize for i in get_db_api_data().all()])
-    resp.status_code = 300
+    retrieve = db_session.query(ApiData).order_by(ApiData.id)
+    db_session.commit()
+    search_result_list = list(retrieve)
+    resp = jsonify(json_list=[i.serialize for i in search_result_list])
     return resp
 
 @app.route("/insert_api_data/<values1>,<values2>,<values3>")
