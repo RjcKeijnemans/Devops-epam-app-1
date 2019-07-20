@@ -40,7 +40,6 @@ class ApiData(Base):
         }
 def get_db_api_data() -> ApiData:
     api_data = db_session.query(ApiData)
-    db_session.commit()
     return api_data
 
 @app.route("/", methods=["GET"])
@@ -49,11 +48,14 @@ def app_index():
 
 @app.route("/get_api_data")
 def get_api_data():
-    resp = jsonify(json_list=[i.serialize for i in get_db_api_data().all()])
+    retrieve = db_session.query(ApiData)
+    db_session.commit()
+    search_result_list = list(retrieve)
+    resp = jsonify(json_list=[i.serialize for i in search_result_list])
     resp.status_code = 200
     return resp
 
-@app.route("/insert_api_data/<values1>,<values2>,<values3>", methods=["GET", "POST"])
+@app.route("/insert_api_data/<values1>,<values2>,<values3>", methods=["POST"])
 def insert_api_data(values1, values2, values3):
     insert = ApiData(uuid1=values1, uuid2=values2, uuid3=values3)
     db_session.add(insert)
