@@ -53,7 +53,7 @@ def get_api_data():
     resp.status_code = 200
     return resp
 
-@app.route("/insert_api_data/<values1>,<values2>,<values3>", methods=["GET, POST"])
+@app.route("/insert_api_data/<values1>,<values2>,<values3>", methods=["GET", "POST"])
 def insert_api_data(values1, values2, values3):
     insert = ApiData(uuid1=values1, uuid2=values2, uuid3=values3)
     db_session.add(insert)
