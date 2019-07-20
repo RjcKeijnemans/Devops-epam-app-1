@@ -46,7 +46,7 @@ def get_db_api_data() -> ApiData:
 def app_index():
     return "Available methods are: <br/> /get_api_data, <br/> /insert_api_data/(v1,v2,v3), <br/> /insert_api_data_json, <br/> /delete_api_data/(id), <br/> /update_api_data/(id,v1,v2,v3) <br/> /search_api_data/(id_or_uuid,v1) <br/><br/>WARNING: methods with multiple inputs are space sensitive."
 
-@app.route("/get_api_data", methods=["GET"])
+@app.route("/get_api_data")
 def get_api_data():
     resp = jsonify(json_list=[i.serialize for i in get_db_api_data().all()])
     resp.status_code = 300
@@ -65,7 +65,7 @@ def delete_api_data(val):
     db_session.commit()
     return 'Succesfully deleted the row by id from the database table!'
 
-@app.route('/insert_api_data_json', methods=["GET", "POST"])
+@app.route('/insert_api_data_json')
 def add_message():
     insert = request.json
     insert_uuid1 = insert['uuid1']
