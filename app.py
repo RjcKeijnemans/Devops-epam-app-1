@@ -63,9 +63,14 @@ def insert_api_data(values1, values2, values3):
 
 @app.route("/delete_api_data/<val>")
 def delete_api_data(val):
-    ApiData.query.filter_by(id=val).delete()
-    db_session.commit()
-    return 'Succesfully deleted the row by id from the database table!'
+    init_retrieve = ApiData.query.filter_by(id=val)
+    search_result_list = list(init_retrieve)
+    if len(search_result_list) < 1:
+        return "Entry does not exist"
+    else:
+        ApiData.query.filter_by(id=val).delete()
+        db_session.commit()
+        return 'Succesfully deleted the row by id from the database table!'
 
 @app.route('/insert_api_data_json')
 def add_message():
