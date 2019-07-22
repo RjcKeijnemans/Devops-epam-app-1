@@ -13,7 +13,7 @@ steps:
    cd Devops-epam-app/infra-gcp
 
    # Initalize Terraform with GCP creds
-   export GOOGLE_CREDENTIALS=$AGENT_TEMPDIRECTORY/CI_PIPELINE_ID.json
+   export GOOGLE_CREDENTIALS=$(SERVICE_ACCOUNT)
    # Deploy terraform infrastructure
    terraform init 
    terraform apply -auto-approve
