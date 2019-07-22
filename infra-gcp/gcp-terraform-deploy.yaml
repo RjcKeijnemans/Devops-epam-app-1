@@ -2,6 +2,7 @@ variables:
 - group: Infrastructure-Variables-EPAM-4
 steps:
 - script: |
+
    sudo apt-get -y update
    sudo apt-get -y install git
 
@@ -13,7 +14,7 @@ steps:
    cd Devops-epam-app/infra-gcp
 
    # Initalize Terraform with GCP creds
-   echo -e $(SERVICE_ACCOUNT) >> CI_PIPELINE_ID.json
+   export GOOGLE_CLOUD_KEYFILE_JSON=$AGENT_TEMPDIRECTORY/CI_PIPELINE_ID.json
    # Deploy terraform infrastructure
    terraform init 
    terraform apply -auto-approve

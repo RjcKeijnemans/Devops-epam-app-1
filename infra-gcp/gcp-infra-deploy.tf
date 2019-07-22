@@ -1,5 +1,4 @@
 provider "google" {
-  credentials = "${file("CI_PIPELINE_ID.json")}"
   project = var.project_id
   region  = var.region
   zone    = var.zone
