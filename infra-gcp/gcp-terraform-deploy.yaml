@@ -13,7 +13,8 @@ steps:
    cd Devops-epam-app/infra-gcp
 
    # Initalize Terraform with GCP creds
-   echo $(SERVICE_ACCOUNT) > CI_PIPELINE_ID.json
-   terraform init 
+   echo -e $(SERVICE_ACCOUNT) >> /tmp/CI_PIPELINE_ID.json
+   export GOOGLE_CLOUD_KEYFILE_JSON=/tmp/CI_PIPELINE_ID.json
    # Deploy terraform infrastructure
+   terraform init 
    terraform apply -auto-approve
